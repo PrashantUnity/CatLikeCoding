@@ -1,1 +1,174 @@
 ﻿@page "/" 
+
+<PageTitle>Creating a Clock</PageTitle>
+<MudPaper Class="d-flex flex-column flex-grow-1 gap-4" Elevation="0">
+    <MudPaper Width="100%">
+        <MudText Typo="Typo.h1"><b>Game Objects and Scripts</b></MudText>
+    </MudPaper> 
+    <MudPaper  Width="100%">
+        <MudList>
+            <MudListItem>
+                Build a clock with simple objects.
+            </MudListItem>
+            <MudListItem>
+                Write a C# script.
+            </MudListItem>
+            <MudListItem>
+                Rotate the clock's arms to show the time.
+            </MudListItem>
+            <MudListItem>
+                Animate the arms.
+            </MudListItem>
+        </MudList>
+    </MudPaper> 
+    <MudPaper  Width="100%">
+        <MudText Typo="Typo.subtitle1">
+            This is the first tutorial in a series about learning the basics of working with Unity. In it we will create a simple clock and program a component to have it display the current time. You don't need to have any experience with the Unity editor yet, but you're assumed to have some experience with multi-window editor applications in general.
+            <br />
+            At the bottom of all my recent tutorials you'll find links to the tutorial license, a repository containing the finished tutorial project, and a PDF version of the tutorial page.
+            <br />
+            This tutorial is made with Unity 2020.3.6f1.
+
+        </MudText>
+    </MudPaper>
+    <MudPaper  Width="100%">
+        <MudImage Src="images/tutorials/unity/topics/basics/clock/clock.jpg" Fluid="true"/>
+        <MudText Typo="Typo.subtitle2">
+            It is time to create a clock.
+        </MudText>
+    </MudPaper>
+    <MudPaper Width="100%"> 
+        <div class="d-flex">
+            <MudText><strong>1<span> </span></strong></MudText>
+            <MudText><strong>Creating a Project</strong></MudText>
+        </div> 
+        <MudText Typo="Typo.subtitle1">
+            Before we can start working with the Unity editor we must first create a project.
+        </MudText>  
+    </MudPaper> 
+    <MudPaper Width="100%">
+        <div class="d-flex">
+            <MudText><strong>1.1 <span> </span></strong></MudText>
+            <MudText><strong>New Project</strong></MudText>
+        </div>
+        <MudText Typo="Typo.subtitle1">
+            When you open Unity you will be presented with the Unity Hub. This is a launcher and installer app from where you can create or open projects, install Unity versions, and do some other things. If you don't have Unity 2020.3 or higher installed add it now.
+            <MudExpansionPanel Text="Which Unity versions are appropriate?">
+                Unity releases multiple new versions per year. There are two parallel release schedules. The most stable and safe are the LTS releases. LTS stands for long term support, which is two years in Unity's case. I stick to LTS versions for my tutorials. This tutorial uses 2020.3.6 specifically. The third portion of the version number indicates the patch release. Patch releases contain bug fixes and only rarely new functionality. A further f1 suffix indicates an official final release. Any 2020.3 version will do for this tutorial.
+
+                The highest Unity version is of the development branch, which introduces new features and possibly removes old functionality. These versions aren't as reliable as LTS versions and only remain supported for a few months each.
+            </MudExpansionPanel>
+            Occasionally my tutorials contain little questions and their answers, always in a gray box, like the one above. On a web page the answer is hidden by default. This can be toggled by clicking or tapping the question.
+
+            When you create a new project you get to pick its Unity version and a template. We'll use the standard 3D template. Once it's created it gets added to the list of projects and gets opened in the appropriate version of the Unity editor.
+            <MudExpansionPanel Text="Can I create a project with a different render pipeline?">
+                Yes, the only difference is that the project will have more things in its default scene and your materials will look different. Your project will also contain the appropriate packages.
+            </MudExpansionPanel>
+        </MudText>
+    </MudPaper>
+
+    <MudPaper Width="100%">
+        <div class="d-flex">
+            <MudText><strong>1.2</strong></MudText>
+            <MudText><strong> Editor Layout</strong></MudText>
+        </div>
+        <MudText Typo="Typo.subtitle1">
+            If you haven't customized the editor yet, you will end up with its default window layout.
+            <MudImage Src="images/tutorials/unity/topics/basics/clock/clock.jpg" Fluid="true" />
+            <MudText>Default editor layout.</MudText>
+            The default layout contains all the windows that we need, but you can customize it as you like, by reordering and grouping windows. You can also open and close windows, like the one of the asset store. Each window also has its own configuration options, accessible via the triple-dot button in their top right corner. Besides that most also have a toolbar with more options. If your window doesn't look the same as in the tutorials—for example the scene window has a uniform background instead of a skybox—then one of its options is different.
+
+            You can switch to a preconfigured layout via the dropdown menu at the top right of the Unity editor. You can also save your current layout there so you can revert to it later.
+        </MudText>
+    </MudPaper>
+
+    <MudPaper Width="100%">
+        <div class="d-flex">
+            <MudText><strong>1.3<span> </span></strong></MudText>
+            <MudText><strong>Packages</strong></MudText>
+        </div>
+        <MudText Typo="Typo.subtitle1">
+            Unity's functionality is modular. Besides the core functionality there are extra packages that can be downloaded and included in your project. The default 3D project currently includes a few packages by default, which you can see in the project window under Packages.
+            <MudImage Src="images/tutorials/unity/topics/basics/clock/clock.jpg" Fluid="true" />
+            <MudText>Default packages.</MudText>
+            These packages can be hidden, by toggling the button at the top right of the project window that looks like an eye with a dash through it. This is purely to reduce visual clutter in the editor, the packages are still part of the project. The button also displays how many such packages there are.
+
+            You can control which packages are included in your project via the package manager, which can be opened via the Window / Package Manager menu item.
+            <MudImage Src="images/tutorials/unity/topics/basics/clock/clock.jpg" Fluid="true" />
+            <MudText>Package manager, only showing packages in project.</MudText>
+
+            The packages add extra functionality to Unity. For example, Visual Studio Editor adds integration for the Visual Studio editor, used to write code. This tutorial doesn't use the functionality of the included packages, so I removed them all. The only exception is Visual Studio Editor because that's the editor that I use for writing code. If you use a different editor you'd want to include its integration package, if it exists.
+            <MudExpansionPanel Text="Don't you also need the Visual Studio Code Editor package?">
+                Despite the similar names, Visual Studio and Visual Studio Code are two different editors. You only need one of the packages, depending on which editor you use.
+            </MudExpansionPanel>
+
+            The easiest way to remove packages is by first using the toolbar to limit the package list to In Project only. Then select the packages one at a time and use the Remove button at the bottom right of the window. Unity will recompile after each removal, so it takes a few seconds before the process is finished.
+
+            After removing everything except Visual Studio Editor I am left with three packages visible in the project window: Custom NUnit, Test Framework, and Visual Studio Editor. The other two are still there because Visual Studio Editor depends on them.
+
+            You can make dependencies and implicitly imported packages visible in the package manager via the project settings window, opened via Edit / Project Settings... Select its Package Manager category and then enable Show Dependencies under Advanced Settings.
+
+            <MudImage Src="images/tutorials/unity/topics/basics/clock/clock.jpg" Fluid="true" />
+            <MudText>Package manager project settings; Show Dependencies enabled.</MudText>
+
+        </MudText>
+    </MudPaper>
+
+    <MudPaper Width="100%">
+        <div class="d-flex">
+            <MudText><strong>1.4<span> </span></strong></MudText>
+            <MudText><strong>Color Space</strong></MudText>
+        </div>
+        <MudText Typo="Typo.subtitle1">
+            Nowadays rendering is usually done in linear color space, but Unity still configured to use gamma color space by default. For best visual results select the Player category of the project settings window, open the Other Settings panel, and scroll down to its Rendering section. Make sure that Color Space is set to Linear. Unity will show warning that this might take a long time, but this won't be the case for a nearly-empty project. Confirm to switch.
+            <MudImage Src="images/tutorials/unity/topics/basics/clock/clock.jpg" Fluid="true" />
+            <MudText>Color space set to linear.</MudText>
+            <MudExpansionPanel Text="Is there a reason to ever use gamma color space?">
+                Only when you're targeting old hardware or old graphics APIs. OpenGL ES 2.0 and WebGL 1.0 don't support linear space, besides that gamma can be faster than linear on old mobile devices.
+            </MudExpansionPanel>
+        </MudText>
+    </MudPaper>
+
+    <MudPaper Width="100%">
+        <div class="d-flex">
+            <MudText><strong>1.5<span> </span></strong></MudText>
+            <MudText><strong>Sample Scene</strong></MudText>
+        </div>
+        <MudText Typo="Typo.subtitle1">
+            The new project contains a sample scene named SampleScene, which is opened by default. You can find its asset under Assets / Scenes in the project window.
+            <MudImage Src="images/tutorials/unity/topics/basics/clock/clock.jpg" Fluid="true" />
+            <MudText>Sample scene in project window.</MudText>
+            By default the project window uses a two-column layout. You can switch to a one-column layout via its triple-dot configuration menu option.
+            <MudImage Src="images/tutorials/unity/topics/basics/clock/clock.jpg" Fluid="true" />
+            <MudText>One-column layout.</MudText>
+            The sample scene contains a main camera and a directional light. These are game objects. They are listed in the hierarchy window, under the scene.
+            <MudImage Src="images/tutorials/unity/topics/basics/clock/clock.jpg" Fluid="true" />
+            <MudText>Object hierarchy within scene.</MudText>
+            You can select a game object either via the hierarchy window or the scene window. The camera has a scene icon that looks like an oldfashioned film camera while the directional light's icon looks like a sun.
+            <MudImage Src="images/tutorials/unity/topics/basics/clock/clock.jpg" Fluid="true" />
+            <MudText>Icons in scene window.</MudText>
+            <MudExpansionPanel Text="How do I navigate the scene window?">
+                When an object is selected details about it will be shown in the inspector window, but we'll cover those when we need them. We won't need to modify the camera nor the light, so we can hide them in the scene by clicking the eye icon to the left of them in the hierarchy window. This icon is invisible by default but will appear when we hover the cursor there. This is purely to reduce visual clutter in the scene window.
+            </MudExpansionPanel> 
+            
+
+            <MudImage Src="images/tutorials/unity/topics/basics/clock/clock.jpg" Fluid="true" />
+            <MudText>Hidden objects.</MudText>
+            <MudExpansionPanel Text="What does the hand-like icon next to the eye do?">
+                Next to the column that contains the eye icons is another column that contains hand-like icons. These icons are also invisible by default. When a game object's hand icon is active it is impossible to select the object via the scene window. This way you can control which objects respond to selection via the scene window.
+            </MudExpansionPanel>
+
+        </MudText>
+    </MudPaper>
+
+    <MudPaper Width="100%">
+        <div class="d-flex">
+            <MudText><strong>2<span> </span></strong></MudText>
+            <MudText><strong>Building a Simple Clock</strong></MudText>
+        </div>
+        <MudText Typo="Typo.subtitle1">
+            Now that our project is set up correctly we can start creating our clock.
+        </MudText>
+    </MudPaper>
+     
+</MudPaper>

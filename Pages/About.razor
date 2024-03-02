@@ -60,19 +60,7 @@
 </MudPaper>
 @code
 {
-    #region Links
-    string twitter = "http://twitter.com/catlikecoding";
-    string blueSky = "https://bsky.app/profile/catlikecoding.com";
-    string mastodon = "https://mastodon.gamedev.place/@catlikecoding";
-    string tumbler = "https://www.tumblr.com/blog/catlikecoding";
-    string reddit = "https://www.reddit.com/user/catlikecoding";
-    string unityForm = "https://forum.unity.com/threads/catlike-codings-c-and-shader-text-tutorials.98761/";
-    string kofi = "https://ko-fi.com/catlikecoding";
-    string patreon = "https://www.patreon.com/catlikecoding";
-    string atomfeed = "https://catlikecoding.com/unity/tutorials/feed.atom";
-    string licence = "https://catlikecoding.com/unity/tutorials/license/";
-    string facebook = "https://facebook.com/catlikecoding";
-    string linkedIn = "https://www.linkedin.com/in/jrjflick/";
+    #region Links       
     string anyDice = "https://anydice.com/";
     string tawkTo = "https://tawk.to/chat/597cdb5b0d1bb37f1f7a6735/default/";
     #endregion
@@ -137,6 +125,12 @@
             Name ="Linkedin",
             TargetLink="https://www.linkedin.com/in/jrjflick/"
         },
+        new Social()
+        {
+            ImageUrl = "images/social/unity.svg",
+            Name ="Unity Form",
+            TargetLink="https://forum.unity.com/threads/catlike-codings-c-and-shader-text-tutorials.98761/"
+        }
 
     };
     [Inject]
