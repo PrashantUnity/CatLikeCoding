@@ -1,0 +1,60 @@
+﻿<MudPaper style="@($"background: url({headingImage});background-repeat: no-repeat;background-size:cover;")" Elevation="0"  >
+    <MudList >
+        <MudListItem>
+            <MudText Typo="Typo.h6" Style="color:#fff" Class="@($"ml-{MarginLeft}")">@CreatedBy</MudText>
+        </MudListItem>
+        <MudListItem>
+            <MudText Typo="Typo.h1" Style="color:#fff;" Class="@($"ml-{MarginLeft}")"><b>@TopicName</b></MudText>
+        </MudListItem>
+        <MudListItem>
+            <MudText Typo="Typo.subtitle1" Style="color:#fff; max-width:540px" Class="@($"ml-{MarginLeft}")">
+                @foreach (var item in TopicDescription)
+                {
+                    if (item.TargetLink == string.Empty)
+                    {
+                        @item.Name;
+                    }
+                    else
+                    {
+                        <MudLink Href="@item.TargetLink" Target="_blank"> <span> </span> @item.Name </MudLink>
+                    }
+                }
+            </MudText>
+        </MudListItem>
+        <MudListItem>
+            <MudText Typo="Typo.subtitle2" Style="color:#fff;" Class="@($"ml-{MarginLeft}")"><b>By Jasper Flick</b></MudText>
+        </MudListItem>
+    </MudList>
+</MudPaper> 
+@code {
+    [Parameter]
+    public int MarginLeft { get; set; } = 12;
+
+    [Parameter]
+    public string headingImage { get; set; } = "images/tutorials/unity/tutorial-image.jpg";
+
+    [Parameter]
+    public string CreatedBy { get; set; } = "Cat Like Coding";
+
+    [Parameter]
+    public string TopicName { get; set; } = "Unity Tutorial";
+
+
+    [Parameter]
+    public List<Description> TopicDescription { get; set; } = new List<Description>()
+    {
+        new Description
+        {
+            Name ="These tutorials teach you about C# and shader programming for "
+        },
+        new Description
+        {
+            Name ="Unity ",
+            TargetLink ="https://unity.com/"
+        },
+        new Description
+        {
+            Name =". They build on one another, introducing new programming concepts, math, algorithms, and Unity features. They're useful to both novice and experienced developers.", 
+        },
+    };
+}

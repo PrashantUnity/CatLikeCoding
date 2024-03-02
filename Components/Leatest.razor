@@ -1,0 +1,28 @@
+﻿@inject NavigationManager Nav
+
+
+<MudPaper Class="d-flex flex-wrap  justify-center gap-4" Elevation="0">
+    @foreach (var item in ListOfLatestClass)
+    { 
+        <MudCard >
+            <MudCardMedia Image="@item.ImageUrl" Height="@item.Height"  /> 
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" 
+                           Color="Color.Transparent"
+                           FullWidth="true"
+                           OnClick="()=>PageToNavigate(item.TargetPage)">@item.Name</MudButton>
+            </MudCardActions>
+        </MudCard>
+    } 
+</MudPaper>
+@code {
+
+    [Parameter]
+    public List<LeatestClass> ListOfLatestClass { get; set; } = new(); 
+
+    void PageToNavigate(string TargetPage)
+    {
+        Nav.NavigateTo(TargetPage);
+    }
+
+}

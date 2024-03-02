@@ -1,0 +1,11 @@
+﻿<MudPaper Elevation="0">
+    @for (int i = 0; i < SpaceHeight; i++)
+    {
+        <br />
+    }
+</MudPaper>
+
+@code {
+    [Parameter]
+    public int SpaceHeight { get; set; } = 1;
+}

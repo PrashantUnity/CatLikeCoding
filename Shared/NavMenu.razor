@@ -1,0 +1,195 @@
+﻿<MudNavMenu>
+    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning">Home</MudNavLink>
+    <MudDivider Class="my-2" />
+    <MudNavLink Href="About" Icon="@Icons.Material.Filled.People" IconColor="Color.Primary">About</MudNavLink>
+    <MudDivider Class="my-2" />
+    @* Try To Do this in recursive *@
+    <MudNavGroup Title="@unity.Name" Icon="@Icons.Material.Filled.Gamepad" IconColor="@unity.IconImageColor" Expanded="false">
+        @foreach (var topics in unity.ListOfNavClass)
+        {
+            <MudNavGroup Title="@topics.Name" Icon="@topics.IconImage" IconColor="@topics.IconImageColor" Expanded="false">
+                @foreach (var chapters in topics.ListOfNavClass)
+                {
+                    <MudNavGroup Title="@chapters.Name" Icon="@chapters.IconImage" IconColor="@chapters.IconImageColor" Expanded="false">
+                        @foreach (var subchapter in chapters.ListOfNavClass)
+                        {
+                            <MudNavLink Href="@subchapter.Link"
+                                        Icon="@subchapter.IconImage"
+                                        IconColor="Color.Success">
+                                @subchapter.Name
+                            </MudNavLink>
+                        }
+                    </MudNavGroup>
+
+                }
+            </MudNavGroup>
+        }
+    </MudNavGroup>
+    <MudDivider Class="my-2" /> 
+    <MudNavGroup Title="@godot.Name" Icon="@Icons.Material.Filled.Gamepad" IconColor="@godot.IconImageColor" Expanded="false">
+        @foreach (var topics in godot.ListOfNavClass)
+        {
+            <MudNavGroup Title="@topics.Name" Icon="@topics.IconImage" IconColor="@topics.IconImageColor" Expanded="false">
+                @foreach (var chapters in topics.ListOfNavClass)
+                {
+                    <MudNavGroup Title="@chapters.Name" Icon="@chapters.IconImage" IconColor="@chapters.IconImageColor" Expanded="false">
+                        @foreach (var subchapter in chapters.ListOfNavClass)
+                        {
+                            <MudNavLink Href="@subchapter.Link"
+                                        Icon="@subchapter.IconImage"
+                                        IconColor="Color.Success">
+                                @subchapter.Name
+                            </MudNavLink>
+                        }
+                    </MudNavGroup>
+
+                }
+            </MudNavGroup>
+        }
+    </MudNavGroup>
+</MudNavMenu>
+
+@code {
+
+
+    NavClass unity = new()
+    {
+            Name = "Unity",
+            IconImage = "@Icons.Material.Filled.Gamepad",
+            IconImageColor = Color.Secondary,
+            ListOfNavClass = new List<NavClass>
+            {
+                new NavClass()
+                {
+                    Name = "Topics",
+                    IconImage = Icons.Material.Filled.Business,
+                    IconImageColor =Color.Info,
+                    ListOfNavClass = new List<NavClass>
+                    {
+                        new NavClass()
+                        {
+                            Name = "Basics",
+                            IconImage = Icons.Material.Filled.Newspaper,
+                            IconImageColor =Color.Error,
+                            ListOfNavClass = new List<NavClass>
+                            {
+                                new NavClass()
+                                {
+                                    Name = "Creating a Clock",
+                                    Link = "",
+                                    IconImage =Icons.Material.Filled.WatchLater
+                                },
+                                new NavClass()
+                                {
+                                    Name = "Visualizing Math",
+                                    Link = "",
+                                    IconImage =Icons.Material.Filled.Book
+                                },
+                                new NavClass()
+                                {
+                                    Name = "Sculpting with Numbers",
+                                    Link = "",
+                                    IconImage =Icons.Material.Filled.FormatShapes
+                                },
+                                new NavClass()
+                                {
+                                    Name = "MS and FPS",
+                                    Link = "",
+                                    IconImage =Icons.Material.Filled.Memory
+                                },
+
+                                new NavClass()
+                                {
+                                    Name = "Rendering One Million Cubes",
+                                    Link = "",
+                                    IconImage =Icons.Material.Filled.BeachAccess
+                                },
+                                new NavClass()
+                                {
+                                    Name = "Animating a Fractal",
+                                    Link = "",
+                                    IconImage =Icons.Material.Filled.AirlineSeatReclineExtra
+                                },
+                                new NavClass()
+                                {
+                                    Name = "Making the Artificial Look Natural",
+                                    Link = "",
+                                    IconImage =Icons.Material.Filled.AppShortcut
+                                },
+                            }
+                        }
+                    }
+                }
+            }
+    };
+    NavClass godot = new()
+    {
+        Name = "Godot",
+        IconImage = "@Icons.Material.Filled.Gamepad",
+        IconImageColor = Color.Tertiary,
+        ListOfNavClass = new List<NavClass>
+        {
+            new NavClass()
+            {
+                Name = "Topics",
+                IconImage = Icons.Material.Filled.Business,
+                IconImageColor =Color.Info,
+                ListOfNavClass = new List<NavClass>
+                {
+                    new NavClass()
+                    {
+                        Name = "Basics",
+                        IconImage = Icons.Material.Filled.Newspaper,
+                        IconImageColor =Color.Error,
+                        ListOfNavClass = new List<NavClass>
+                        {
+                            new NavClass()
+                            {
+                                Name = "Creating a Clock",
+                                Link = "",
+                                IconImage =Icons.Material.Filled.WatchLater
+                            },
+                            new NavClass()
+                            {
+                                Name = "Visualizing Math",
+                                Link = "",
+                                IconImage =Icons.Material.Filled.Book
+                            },
+                            new NavClass()
+                            {
+                                Name = "Sculpting with Numbers",
+                                Link = "",
+                                IconImage =Icons.Material.Filled.FormatShapes
+                            },
+                            new NavClass()
+                            {
+                                Name = "MS and FPS",
+                                Link = "",
+                                IconImage =Icons.Material.Filled.Memory
+                            },
+
+                            new NavClass()
+                            {
+                                Name = "Rendering One Million Cubes",
+                                Link = "",
+                                IconImage =Icons.Material.Filled.BeachAccess
+                            },
+                            new NavClass()
+                            {
+                                Name = "Animating a Fractal",
+                                Link = "",
+                                IconImage =Icons.Material.Filled.AirlineSeatReclineExtra
+                            },
+                            new NavClass()
+                            {
+                                Name = "Making the Artificial Look Natural",
+                                Link = "",
+                                IconImage =Icons.Material.Filled.AppShortcut
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    }; 
+}

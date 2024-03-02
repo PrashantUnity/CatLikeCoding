@@ -1,0 +1,23 @@
+﻿@inject IJSRuntime JSRuntime;
+<MudTooltip Text="Patreon" Class="mx-3">
+    <MudImage Class="donation " Height="HeightOfImage" Src="images/patreon.svg" @onclick="()=>OpenNewPage(patreon)" />
+</MudTooltip>
+<MudTooltip Text="Kofi" Class="mx-3">
+    <MudImage Class="donation mx-3" Height="HeightOfImage" Src="images/kofi.png" @onclick="()=>OpenNewPage(kofi)" />
+</MudTooltip>
+
+@code {
+    [Parameter]
+    public int HeightOfImage { get; set; } = 50;
+    string patreon = "https://www.patreon.com/catlikecoding";
+    string kofi = "https://ko-fi.com/catlikecoding";
+    async Task OpenNewPage(string url)
+    {
+        await JSRuntime.InvokeAsync<object>("open", url, "_blank");
+    }
+}
+<style>
+    .donation {
+        cursor: pointer;
+    }
+</style>

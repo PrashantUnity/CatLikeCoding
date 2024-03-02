@@ -1,0 +1,90 @@
+﻿<MudPaper Class="d-flex justify-center flex-grow-1 gap-4 mx-12" MaxWidth="720" Elevation="0"> 
+
+<MudExpansionPanels >
+    <MudExpansionPanel Text="Why Patreon?">
+        <MudText> 
+        Because cardboard boxes lack power sockets and internet connections, living in one is not an option. Starving or freezing to death is also a killer for productivity. So I need some way to finance the time and effort required to create these tutorials.
+           <br />
+
+        I chose Patreon because I like the concept of patronage. You can
+                <MudLink Href="@patreon" Target="_blank">become a patron</MudLink> , supporting me so I can keep creating tutorials for you and everyone else. Everybody benefits from your generosity!
+            </MudText>
+    </MudExpansionPanel> 
+
+    <MudExpansionPanel Text="I don't like Patreon. Can I donate another way?">
+        <MudText>
+                Yes, you can also support me via <MudLink Href="@kofi" Target="_blank">Ko-fi</MudLink> or
+                <MudLink Href="@patreon" Target="_blank">Patreon. </MudLink>
+            </MudText>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Can I get notified of new tutorials?">
+        <MudText> 
+        This page has an
+                <MudLink Href="@atomfeed" Target="_blank"> Atom feed </MudLink>,which news reader apps should auto-discover.
+        <br />
+        You can also get notified via
+                <MudLink Href="@kofi" Target="_blank">Ko-fi</MudLink> or
+                <MudLink Href="@patreon" Target="_blank">Patreon. </MudLink>
+        <br />
+        Besides that I post updates on
+                <MudLink Href="@blueSky" Target="_blank">Bluesky,</MudLink>
+                <MudLink Href="@mastodon" Target="_blank">Mastodon,</MudLink>
+                <MudLink Href="@tumbler" Target="_blank">tumblr,</MudLink>
+                <MudLink Href="@twitter" Target="_blank">Twitter,</MudLink>
+                <MudLink Href="@reddit" Target="_blank">reddit,</MudLink>
+                <MudLink Href="@unityForm" Target="_blank">the Unity forum </MudLink>, and some other places.
+            </MudText>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Can I use your tutorial code for commercial projects?">
+        <MudText>
+                Yes. See the <MudLink Href="@licence" Target="_blank">license </MudLink> page.
+
+        Make no mistake, the route from these tutorials to a viable commercial product is a long one.</MudText>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Can I redistribute or translate your tutorials?">
+        <MudText> 
+        Yes, with limitations. See the <MudLink Href="@licence" Target="_blank">license </MudLink> page.</MudText>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Which version of Unity should I use?">
+        <MudText> 
+        I recommend that you use an LTS branch. LTS stands for long-term support and such versions are the most stable branches of Unity available, but they are still subject to change. The most recent two LTS branches are actively supported, for up to two years each. The older one is the most stable but can contain bugs that will never get fixed. The younger one will have more bugs—especially shortly after release—but they are likely to get fixed quicker.
+        <br />
+        Never automatically upgrade your project to a higher Unity version. First test it to see if there are any new show-stopping bugs and make sure that you have a backup of your project.
+        <br />
+        Other Unity versions are TECH branches, which are in active development and are labeled alpha or beta. You'll find the newest features there, but also the most bugs, instability, and sudden changes that might break your projects and my tutorials. Things break all the time in TECH, to get fixed again later. Once the TECH version of a year has been stabilized and many bugs have been fixed it becomes the new LTS branch of the same year. A new LTS branch is typically still very buggy though and more bugs will slip in via patches. Such bugs can also find their way into the older LTS version, but this happens less often.
+        <br />
+        Besides Unity itself there are also packages that have their own versions, like ProBuilder and URP. These are linked to specific Unity versions. You typically use the latest verified package version that's available for the Unity version that you're using, unless it contains a show-stopping bug.</MudText>
+    </MudExpansionPanel>
+
+    <MudExpansionPanel Text="Why text and not video tutorials?">
+        <MudText> 
+        As these tutorials are about writing code, it seems natural to use text. Understanding the code might require a lot of jumping back and forth, pausing, looking things up, experimenting, and so forth, all at your own pace. I think text is more convenient than video for this.
+        <br />
+        Also, video tutorials seem to be proliferating and I didn't want those that prefer text to be left out in the cold.
+        </MudText>
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Why are you not using good OOP design?">
+        <MudText> 
+            These tutorials aren't about Object-Oriented Programming in general. They are about programming for Unity. Development for Unity is for a large part procedural in nature, not object-oriented. Unity is component-based. You're working with collections of data with behavior attached. This sounds like objects, but encapsulation and identity protection are not at all part of the architecture. Trying to force Unity to always adhere to a strict OOP standard is not practical. In fact, Unity Technologies is shifting focus to data-driven-design with ECS and DOTS.
+        </MudText>
+    </MudExpansionPanel>
+</MudExpansionPanels>
+</MudPaper>
+
+@code{
+    string twitter = "http://twitter.com/catlikecoding";
+    string blueSky = "https://bsky.app/profile/catlikecoding.com";
+    string mastodon = "https://mastodon.gamedev.place/@catlikecoding";
+    string tumbler = "https://www.tumblr.com/blog/catlikecoding";
+    string reddit = "https://www.reddit.com/user/catlikecoding";
+    string unityForm = "https://forum.unity.com/threads/catlike-codings-c-and-shader-text-tutorials.98761/";
+    string kofi = "https://ko-fi.com/catlikecoding";
+    string patreon = "https://www.patreon.com/catlikecoding";
+    string atomfeed = "https://catlikecoding.com/unity/tutorials/feed.atom";
+    string licence = "https://catlikecoding.com/unity/tutorials/license/";
+
+}

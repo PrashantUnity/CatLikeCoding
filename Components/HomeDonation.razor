@@ -1,0 +1,27 @@
+﻿<MudPaper Class="d-flex justify-center" Elevation="0"> 
+    <MudList >
+        <MudListItem>
+            <MudText Typo="Typo.subtitle1">Enjoying the tutorials? Are they useful?</MudText>
+        </MudListItem>
+        <MudListItem>
+                <MudText Typo="Typo.subtitle1">Please support me on 
+                    <MudLink Href="@patreon" Target="_blank">Patreon </MudLink>or
+                    <MudLink Href="@kofi" Target="_blank">Ko-fi!</MudLink>
+                </MudText>
+        </MudListItem>
+        <MudListItem>
+            <Donation HeightOfImage="100"/>
+        </MudListItem>
+        <MudListItem>
+            <MudText Typo="Typo.subtitle1">
+                <MudLink Href="@directDonation" Target="_blank">Or make a direct donation!</MudLink>
+            </MudText>
+        </MudListItem>
+    </MudList>
+</MudPaper>
+
+@code {
+    string patreon = "https://www.patreon.com/catlikecoding";
+    string kofi = "https://ko-fi.com/catlikecoding";
+    string directDonation = "https://catlikecoding.com/unity/tutorials/donating.html";
+}

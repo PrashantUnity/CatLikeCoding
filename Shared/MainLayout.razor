@@ -1,0 +1,100 @@
+﻿@inherits LayoutComponentBase 
+<MudThemeProvider Theme="MyCustomTheme" @bind-IsDarkMode="@_isDarkMode" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+
+<MudLayout>
+    <MudAppBar Elevation="0">
+        <MudIconButton 
+            Icon="@Icons.Material.Filled.Menu" 
+            Color="Color.Inherit"
+            Edge="Edge.Start"
+            OnClick="@((e) => DrawerToggle())" />
+        <MudSpacer /> 
+        <Donation/>
+        <MudToggleIconButton 
+            @bind-Toggled="@_isDarkMode"
+            Icon="@Icons.Material.Filled.BrightnessHigh" 
+            Color="Color.Dark" Title="Dark Mode"
+            ToggledIcon="@Icons.Material.Filled.WbSunny" 
+            ToggledColor="Color.Warning" 
+            ToggledTitle="Light Mode" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">Cat Like Coding</MudText>
+        </MudDrawerHeader>
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+
+    <MudText Typo="Typo.h6" ><b>Generosity</b></MudText>
+    <HomeDonation/>
+</MudLayout>
+
+@code { 
+    bool _drawerOpen = true;
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }  
+}  
+
+@code {
+    private bool _isDarkMode = true;
+    MudTheme MyCustomTheme = new()
+    {
+        Palette = new()
+        {
+            Primary = Colors.Blue.Default,
+            Secondary = Colors.Green.Accent4,
+            AppbarBackground = Colors.Red.Default,
+        },
+        // PaletteDark = new()
+        // {
+        //     Primary = Colors.Blue.Lighten1
+        // },
+
+        // LayoutProperties = new LayoutProperties()
+        // {
+        //     DrawerWidthLeft = "260px",
+        //     DrawerWidthRight = "300px"
+        // }
+    };
+
+    void ReferenceThemeColorModification()
+    {
+        var theme = new MudTheme();
+        var palette = theme.Palette;
+        palette.Primary = "#776be7";
+        palette.Black = "#27272f";
+        palette.Background = "#32333d";
+        palette.BackgroundGrey = "#27272f";
+        palette.Surface = "#373740";
+        palette.DrawerBackground = "#27272f";
+        palette.DrawerText = "rgba(255,255,255, 0.50)";
+        palette.DrawerIcon = "rgba(255,255,255, 0.50)";
+        palette.AppbarBackground = "#27272f";
+        palette.AppbarText = "rgba(255,255,255, 0.70)";
+        palette.TextPrimary = "rgba(255,255,255, 0.70)";
+        palette.TextSecondary = "rgba(255,255,255, 0.50)";
+        palette.ActionDefault = "#adadb1";
+        palette.ActionDisabled = "rgba(255,255,255, 0.26)";
+        palette.ActionDisabledBackground = "rgba(255,255,255, 0.12)";
+        palette.Divider = "rgba(255,255,255, 0.12)";
+        palette.DividerLight = "rgba(255,255,255, 0.06)";
+        palette.TableLines = "rgba(255,255,255, 0.12)";
+        palette.TableStriped = "rgba(255,255,255, 0.2)";
+        palette.LinesDefault = "rgba(255,255,255, 0.12)";
+        palette.LinesInputs = "rgba(255,255,255, 0.3)";
+        palette.TextDisabled = "rgba(255,255,255, 0.2)";
+        palette.Info = "#3299ff";
+        palette.Success = "#0bba83";
+        palette.Warning = "#ffa800";
+        palette.Error = "#f64e62";
+        palette.Dark = "#27272f";
+    }
+}
