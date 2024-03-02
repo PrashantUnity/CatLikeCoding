@@ -1,0 +1,149 @@
+﻿@page "/About"
+@page "/JasperFlick"
+
+
+<MudPaper Class="d-flex flex-column flex-grow-1 gap-4" Elevation="0">
+
+    <MudPaper Class="d-flex justify-center flex-grow-1 gap-4 mt-12  " Height="500" Elevation="0">
+        <MudImage Fluid="true" Src="images/author.jpg" Alt="Swedish Farm House" Class="rounded-lg" />
+    </MudPaper>
+    <MudPaper Class="d-flex justify-center flex-grow-1 gap-4" Height="500" Elevation="0">
+        <MudText Typo="Typo.h2" Color="Color.Secondary">
+            <b>
+                Jasper Flick
+            </b>
+        </MudText>
+    </MudPaper>
+
+    <MudPaper Class="d-flex justify-center flex-grow-1 gap-4 mb-12" Elevation="0">
+        @foreach (var item in listOfSocialMedia)
+        {
+            <MudTooltip Text="@item.Name" Class="mx-3" Color="Color.Secondary">
+                <MudImage Class="donation"
+                          Height="HeightOfImage"
+                          Src="@item.ImageUrl"
+                          @onclick="()=>OpenNewPage(item.TargetLink)" />
+                <MudText>@item.Name</MudText>
+            </MudTooltip>
+        }
+
+    </MudPaper>
+    <MudPaper Class="d-flex justify-center flex-grow-1 gap-4" Elevation="0">
+        <MudPaper Class="d-flex  flex-wrap gap-4" MaxWidth="720px" Elevation="0">
+            <MudText Typo="Typo.subtitle1">
+                Hi, I'm
+                <strong style="@highlightStyle">
+                    Jasper Flick,
+                </strong>
+                a Dutch independent software developer living in Amsterdam, the Netherlands. Catlike Coding is my business.
+            </MudText>
+            <MudText Typo="Typo.subtitle1">
+                I write tutorials for
+                <MudLink Href="unity" Color="@linkColor">Unity </MudLink> and the
+                <MudLink Href="godot" Color="@linkColor">Godot Engine </MudLink>. I also created and maintain
+                <MudLink Href="@anyDice" Target="_blank" Color="@linkColor">AnyDice</MudLink>.
+            </MudText>
+            <MudText Typo="Typo.subtitle1">
+                I am not available for hire nor for consulting nor for any other business arrangement.
+            </MudText>
+            <MudText Typo="Typo.subtitle1">
+                If you're lucky enough to find me online, we can communicate via
+                <MudLink Href="@tawkTo" Target="_blank" Color="@linkColor">tawk.to chat</MudLink>. This is for support or questions, not chitchat. If I'm not available or if you prefer to send indirect messages, you can send a mail to support at the domain of this website.
+            </MudText>
+            <MudText Typo="Typo.subtitle1">
+                I am a
+                <strong style="@highlightStyle">Christian, </strong> born again, and
+                <strong style="@highlightStyle">Jesus Christ </strong>is my savior. He can be your savior too. You can ask me about this as well, but I don't argue, just inform.
+            </MudText>
+        </MudPaper>
+    </MudPaper>
+</MudPaper>
+@code
+{
+    #region Links
+    string twitter = "http://twitter.com/catlikecoding";
+    string blueSky = "https://bsky.app/profile/catlikecoding.com";
+    string mastodon = "https://mastodon.gamedev.place/@catlikecoding";
+    string tumbler = "https://www.tumblr.com/blog/catlikecoding";
+    string reddit = "https://www.reddit.com/user/catlikecoding";
+    string unityForm = "https://forum.unity.com/threads/catlike-codings-c-and-shader-text-tutorials.98761/";
+    string kofi = "https://ko-fi.com/catlikecoding";
+    string patreon = "https://www.patreon.com/catlikecoding";
+    string atomfeed = "https://catlikecoding.com/unity/tutorials/feed.atom";
+    string licence = "https://catlikecoding.com/unity/tutorials/license/";
+    string facebook = "https://facebook.com/catlikecoding";
+    string linkedIn = "https://www.linkedin.com/in/jrjflick/";
+    string anyDice = "https://anydice.com/";
+    string tawkTo = "https://tawk.to/chat/597cdb5b0d1bb37f1f7a6735/default/";
+    #endregion
+
+    Color linkColor = Color.Error;
+    string highlightStyle = "color:cornflowerblue";
+
+
+    List<Social> listOfSocialMedia = new()
+    {
+        new Social()
+        {
+            ImageUrl = "images/social/twitter.svg",
+            Name ="Twitter",
+            TargetLink="http://twitter.com/catlikecoding"
+        },
+        new Social()
+        {
+            ImageUrl = "images/social/bluesky.svg",
+            Name ="BlueSky",
+            TargetLink="https://bsky.app/profile/catlikecoding.com"
+        },
+        new Social()
+        {
+            ImageUrl = "images/social/mastodon.svg",
+            Name ="Mastodon",
+            TargetLink="images/social/mastodon.svg"
+        },
+        new Social()
+        {
+            ImageUrl = "images/social/tumblr.svg",
+            Name ="Tumblr",
+            TargetLink="https://www.tumblr.com/blog/catlikecoding"
+        },
+        new Social()
+        {
+            ImageUrl = "images/social/reddit.svg",
+            Name ="Reddit",
+            TargetLink="https://www.reddit.com/user/catlikecoding"
+        },
+        new Social()
+        {
+            ImageUrl = "images/social/kofi.png",
+            Name ="Kofi",
+            TargetLink="https://ko-fi.com/catlikecoding"
+        },
+        new Social()
+        {
+            ImageUrl = "images/social/patreon.svg",
+            Name ="Patreon",
+            TargetLink="https://www.patreon.com/catlikecoding"
+        },
+        new Social()
+        {
+            ImageUrl = "images/social/facebook.svg",
+            Name ="Facebook",
+            TargetLink="https://facebook.com/catlikecoding"
+        },
+        new Social()
+        {
+            ImageUrl = "images/social/linkein.svg",
+            Name ="Linkedin",
+            TargetLink="https://www.linkedin.com/in/jrjflick/"
+        },
+
+    };
+    [Inject]
+    IJSRuntime JSRuntime { get; set; }
+    int HeightOfImage = 50;
+    async Task OpenNewPage(string url)
+    {
+        await JSRuntime.InvokeAsync<object>("open", url, "_blank");
+    }
+}

@@ -1,10 +1,14 @@
 ﻿<MudNavMenu>
     <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning">Home</MudNavLink>
     <MudDivider Class="my-2" />
-    <MudNavLink Href="About" Icon="@Icons.Material.Filled.People" IconColor="Color.Primary">About</MudNavLink>
+    <MudNavLink Href="About" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.People" IconColor="Color.Primary">About</MudNavLink>
+    <MudDivider Class="my-2" />
+    <MudNavLink Href="Unity" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Snowboarding" IconColor="Color.Secondary">Unity Dashboard</MudNavLink>
+    <MudDivider Class="my-2" />
+    <MudNavLink Href="Godot" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Snowshoeing" IconColor="Color.Tertiary">Godot Dashboard</MudNavLink>
     <MudDivider Class="my-2" />
     @* Try To Do this in recursive *@
-    <MudNavGroup Title="@unity.Name" Icon="@Icons.Material.Filled.Gamepad" IconColor="@unity.IconImageColor" Expanded="false">
+    <MudNavGroup Title="@unity.Name" Icon="@Icons.Material.Filled.AccountTree" IconColor="@unity.IconImageColor" Expanded="false">
         @foreach (var topics in unity.ListOfNavClass)
         {
             <MudNavGroup Title="@topics.Name" Icon="@topics.IconImage" IconColor="@topics.IconImageColor" Expanded="false">
@@ -26,7 +30,7 @@
         }
     </MudNavGroup>
     <MudDivider Class="my-2" /> 
-    <MudNavGroup Title="@godot.Name" Icon="@Icons.Material.Filled.Gamepad" IconColor="@godot.IconImageColor" Expanded="false">
+    <MudNavGroup Title="@godot.Name" Icon="@Icons.Material.Filled.AccountTree" IconColor="@godot.IconImageColor" Expanded="false">
         @foreach (var topics in godot.ListOfNavClass)
         {
             <MudNavGroup Title="@topics.Name" Icon="@topics.IconImage" IconColor="@topics.IconImageColor" Expanded="false">
