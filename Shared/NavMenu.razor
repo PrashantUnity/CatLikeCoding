@@ -1,11 +1,16 @@
-﻿<MudNavMenu>
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning">Home</MudNavLink>
-    <MudDivider Class="my-2" />
+﻿@inject NavigationManager nav
+<MudNavMenu>
+    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning">Home</MudNavLink> 
     <MudNavLink Href="About" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Face" IconColor="Color.Primary">About</MudNavLink>
+    <MudNavLink Href="FAQ" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.QuestionAnswer" IconColor="Color.Primary">FAQ's</MudNavLink>
+    <MudNavLink Href="Donation" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.HealthAndSafety" IconColor="Color.Success">Generosity</MudNavLink>
     <MudDivider Class="my-2" />
-    <MudNavLink Href="Unity" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Snowboarding" IconColor="Color.Secondary">Unity Dashboard</MudNavLink>
-    <MudDivider Class="my-2" />
-    <MudNavLink Href="Godot" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Snowshoeing" IconColor="Color.Tertiary">Godot Dashboard</MudNavLink>
+    @* <MudPaper Elevation="0" Class="d-flex ml-4 flex-grow-1 gap-4" @onclick="()=>OpenNewPage(unityUrl)">
+        <MudImage Src="images/social/unity.svg" Height="20"/>
+        <MudText>Unity</MudText>
+    </MudPaper> *@
+    <MudNavLink Href="unity" Match="NavLinkMatch.Prefix" IconColor="Color.Secondary" Icon="@Icons.Custom.Uncategorized.ChessQueen">Unity</MudNavLink>
+    <MudNavLink Href="Godot" Match="NavLinkMatch.Prefix" Icon="@Icons.Custom.Uncategorized.ChessRook" IconColor="Color.Tertiary">Godot</MudNavLink>
     <MudDivider Class="my-2" />
     @* Try To Do this in recursive *@
     <MudNavGroup Title="@unity.Name" Icon="@Icons.Material.Filled.AccountTree" IconColor="@unity.IconImageColor" Expanded="false">
@@ -50,7 +55,7 @@
                 }
             </MudNavGroup>
         }
-    </MudNavGroup>
+    </MudNavGroup> 
 </MudNavMenu>
 
 @code {
@@ -195,5 +200,13 @@
                 }
             }
         }
-    }; 
+    };
+}
+
+@code{
+    string unityUrl = "unity"; 
+    void OpenNewPage(string url)
+    {
+        nav.NavigateTo(url);
+    }
 }
