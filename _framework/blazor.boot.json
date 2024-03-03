@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "CatLikeCoding",
   "resources": {
-    "hash": "sha256-98xL6eQPePA6QHQMih6ZIqNJ/FLldbJEeIFkTPMe3t4=",
+    "hash": "sha256-E4agnsDN44Gak2pkUy0VB6OwATP5AR4LLVxxXmtIVCw=",
     "jsModuleNative": {
       "dotnet.native.8.0.2.jgt5nhn140.js": "sha256-gPMK16QWoJSTxorlZJqcVtbBRTniIQWlLsJN2O4cJHg="
     },
@@ -17,7 +17,7 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "CatLikeCoding.wasm": "sha256-v08cB+1b4yn0AbZzR2z6HqqiW9sz2DsAQMvPRh7C14I=",
+      "CatLikeCoding.wasm": "sha256-dtEzmTp6DZ2/TSS+u7rna1HNbuSYR10YMjRUMzyvHJw=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-VqitDS81aIpqes9i1/XbPGHGeFBujcjkThLCb47jhrM=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-R4MraSENRE7/s/o0in9ps4cZCUIzmDVjE4gVwWbX3PM=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-jrdFRjrF1131MZ3HGQVsI3dX8cLdZvPz85lsBltxjSM=",
