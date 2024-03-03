@@ -49,7 +49,7 @@
     string imageBanner = "images/banner.jpg";
     async Task OpenNewPage(string url)
     {
-        await JSRuntime.InvokeAsync<object>("open", url, "_blank");
+        await JSRuntime.InvokeVoidAsync("open", url, "_blank");
     }
 }  
   
@@ -68,8 +68,7 @@
             CloseOnEscapeKey = true 
         };
         options.ClassBackground = "my-custom-class";
-        options.NoHeader = true;
-
+        options.NoHeader=true;
         DialogService.Show<DonationDialog>("Simple Dialog", options);
     }
 }

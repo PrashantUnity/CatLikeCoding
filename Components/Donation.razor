@@ -13,7 +13,7 @@
     string kofi = "https://ko-fi.com/catlikecoding";
     async Task OpenNewPage(string url)
     {
-        await JSRuntime.InvokeAsync<object>("open", url, "_blank");
+        await JSRuntime.InvokeVoidAsync("open", url, "_blank");
     }
 }
 <style>
