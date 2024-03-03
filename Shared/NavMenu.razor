@@ -55,7 +55,15 @@
                 }
             </MudNavGroup>
         }
-    </MudNavGroup> 
+    </MudNavGroup>
+
+    <MudDivider Class="my-2" />
+    <MudNavLink  
+        Match="NavLinkMatch.Prefix" 
+        IconColor="Color.Secondary"
+                Icon="@Icons.Custom.Brands.MicrosoftVisualStudio" Disabled="true">
+                .NET @Environment.Version.ToString()
+                </MudNavLink> 
 </MudNavMenu>
 
 @code {
