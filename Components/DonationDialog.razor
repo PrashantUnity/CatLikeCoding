@@ -1,0 +1,49 @@
+﻿@inject IJSRuntime JSRuntime;
+@inject NavigationManager nav;
+<MudDialog DisableSidePadding="true" >
+    <DialogContent >
+        <MudPaper Class="ma-0 d-flex justify-center" Elevation="0">
+            <MudPaper Class="d-flex flex-column" Elevation="0">
+                <MudTooltip Text="Patreon" Class="mx-3">
+                    <MudImage Class="donation " Height="150" Src="images/patreon.svg" @onclick="()=>OpenNewPage(patreon)" />
+                </MudTooltip>
+                <MudText Align="Align.Center" Typo="Typo.subtitle1">
+                    Patreon
+                </MudText>
+            </MudPaper>
+            <MudPaper Class="d-flex flex-column" Elevation="0">
+                <MudTooltip Text="Kofi" Class="mx-3">
+                    <MudImage Class="donation mx-3" Height="150" Src="images/kofi.png" @onclick="()=>OpenNewPage(kofi)" />
+                </MudTooltip>
+                <MudText Align="Align.Center" Typo="Typo.subtitle1">
+                    Ko-fi
+                </MudText>
+            </MudPaper>
+        </MudPaper>
+    </DialogContent> 
+    <DialogActions>
+        <MudButton FullWidth="true" OnClick="Home" Color="Color.Success" Variant="Variant.Filled">
+            Home
+        </MudButton>
+    </DialogActions>
+</MudDialog>
+@code {
+    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+    void Submit() => MudDialog.Close(DialogResult.Ok(true));
+    void Cancel() => MudDialog.Cancel();
+
+    int HeightOfImage { get; set; } = 150;
+    string patreon = "https://www.patreon.com/catlikecoding";
+    string kofi = "https://ko-fi.com/catlikecoding";
+    string imageBanner = "images/banner.jpg";
+
+    async Task OpenNewPage(string url)
+    {
+        await JSRuntime.InvokeAsync<object>("open", url, "_blank");
+    }
+    void Home()
+    {
+        nav.NavigateTo("");
+    }
+}

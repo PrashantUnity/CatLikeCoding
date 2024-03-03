@@ -1,3 +1,75 @@
 ﻿@page "/support"
 @page "/donation" 
-<HomeDonation />
+@inject IJSRuntime JSRuntime;
+@inject IDialogService DialogService
+ 
+ 
+<MudPaper Class="d-flex flex-column justify-center" Height="93vh"
+          Style="@($"background-image:url({imageBanner});background-size: cover;background-position: center;background-repeat: no-repeat;")" @onclick="OpenDialog">
+    <MudPaper Class="d-flex justify-center" Elevation="0" 
+    Style="background:transparent;  ">
+        <MudTooltip Text="Kofi" Class="mx-3 ">
+            <MudImage Class="donation mx-3" Height="@HeightOfImage" Width="@HeightOfImage" ObjectFit="ObjectFit.Contain" Src="images/patreon.svg" @onclick="()=>OpenNewPage(patreon)" />
+        </MudTooltip>
+    </MudPaper>
+
+    <MudPaper Class="d-flex justify-center" Elevation="0" Style="background:transparent;margin-top: -45px; ">
+            <MudPaper Elevation="0" Style="background:transparent;">
+            <MudText Typo="Typo.h1" Style="color:#e1ff00 ; font-weight:bold">
+                CATLIKE 
+                </MudText>
+            <MudText Typo="Typo.h1" Style="color:#00ff80 ; font-weight:bold">
+                CODING 
+                </MudText>
+            </MudPaper>
+        <MudPaper Elevation="0" Style="background:transparent;">
+            <MudText Typo="Typo.h1">
+                <strong>
+                    .
+                </strong>
+            </MudText> 
+                <MudImage Src="images/favicon.svg" Height="@HeightOfImage" Width="@HeightOfImage" ObjectFit="ObjectFit.Contain"  ObjectPosition="ObjectPosition.Bottom"/>
+            </MudPaper>
+    </MudPaper>  
+
+    <MudPaper Class="d-flex justify-center" Elevation="0"
+              Style="background:transparent;  ">
+        <MudTooltip Text="Kofi" Class="mx-3">
+        <MudImage Class="donation mx-3" Height="@HeightOfImage" Width="@HeightOfImage" ObjectFit="ObjectFit.Contain" Src="images/kofi.png" @onclick="()=>OpenNewPage(kofi)"
+                      Style="margin-top: -85px; " />
+        </MudTooltip>
+    </MudPaper> 
+</MudPaper> 
+
+
+@code {
+    int HeightOfImage { get; set; } = 150;
+    string patreon = "https://www.patreon.com/catlikecoding";
+    string kofi = "https://ko-fi.com/catlikecoding";
+    string imageBanner = "images/banner.jpg";
+    async Task OpenNewPage(string url)
+    {
+        await JSRuntime.InvokeAsync<object>("open", url, "_blank");
+    }
+}  
+  
+<style>
+    .my-custom-class {
+        backdrop-filter: blur(10px);
+        color:transparent;
+    }
+</style>
+@code {
+
+    private void OpenDialog()
+    {
+        var options = new DialogOptions 
+        { 
+            CloseOnEscapeKey = true 
+        };
+        options.ClassBackground = "my-custom-class";
+        options.NoHeader = true;
+
+        DialogService.Show<DonationDialog>("Simple Dialog", options);
+    }
+}

@@ -1,0 +1,10 @@
+﻿<MudPaper Style="@($"background-image:url({imageBanner});background-size: cover;background-position: center;background-repeat: no-repeat;")" Elevation="0"> 
+    @ChildComponent
+</MudPaper>
+@code {
+    [Parameter,EditorRequired]
+    public string imageBanner { get; set; }
+
+    [Parameter,EditorRequired]
+    public RenderFragment ChildComponent { get; set; }
+}

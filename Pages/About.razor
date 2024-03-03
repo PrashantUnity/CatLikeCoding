@@ -15,21 +15,22 @@
         </MudText>
     </MudPaper>
 
-    <MudPaper Class="d-flex justify-center flex-grow-1 gap-4 mb-12" Elevation="0">
-        @foreach (var item in listOfSocialMedia)
-        {
-            <MudTooltip Text="@item.Name" Class="mx-3" Color="Color.Secondary">
-                <MudImage Class="donation"
-                          Height="HeightOfImage"
-                          Src="@item.ImageUrl"
-                          @onclick="()=>OpenNewPage(item.TargetLink)" />
-                <MudText>@item.Name</MudText>
-            </MudTooltip>
-        }
-
+    <MudPaper Class="d-flex justify-center flex-grow-1 gap-4 mb-12 mx-2" Elevation="0">
+        <MudPaper Class="d-flex justify-center flex-wrap gap-4" MaxWidth="720px" Elevation="0">
+            @foreach (var item in listOfSocialMedia)
+            {
+                <MudTooltip Text="@item.Name" Class="mx-3" Color="Color.Secondary">
+                    <MudImage Class="donation"
+                              Height="HeightOfImage"
+                              Src="@item.ImageUrl"
+                              @onclick="()=>OpenNewPage(item.TargetLink)" />
+                    <MudText>@item.Name</MudText>
+                </MudTooltip>
+            }
+        </MudPaper>
     </MudPaper>
     <MudPaper Class="d-flex justify-center flex-grow-1 gap-4" Elevation="0">
-        <MudPaper Class="d-flex  flex-wrap gap-4" MaxWidth="720px" Elevation="0">
+        <MudPaper Class="d-flex  flex-wrap gap-4 mx-6" MaxWidth="720px" Elevation="0">
             <MudText Typo="Typo.subtitle1">
                 Hi, I'm
                 <strong style="@highlightStyle">
