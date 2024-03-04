@@ -1,6 +1,6 @@
 ﻿
-<MudDrawer @bind-Open="ShowDrawer"  Anchor="Anchor.Right" Elevation="0" Variant="@DrawerVariant.Mini">
-    <MudNavMenu>
+<MudDrawer @bind-Open="ShowDrawer"  Fixed=true Anchor="Anchor.Right" Elevation="0" Variant="@DrawerVariant.Mini">
+    <MudNavMenu> 
         <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Menu" IconColor="Color.Info" OnClick="ShowRightDrawer">Content</MudNavLink>
         <MudNavGroup Title="Creating a Project" Icon="@Icons.Material.Filled.FiberNew" IconColor="Color.Primary">
             <MudNavLink Href="@($"{path}#1.1")" Icon="@Icons.Material.Filled.Filter1" IconColor="Color.Success">New Project</MudNavLink>
