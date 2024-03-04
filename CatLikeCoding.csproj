@@ -23,6 +23,12 @@
 	  <Folder Include="wwwroot\images\tutorials\godot\topics\basics\graphs\" />
 	  <Folder Include="wwwroot\images\tutorials\unity\topics\basics\graphs\" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="wwwroot\images\tutorials\unity\topics\basics\clock\clock.jpg">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
 	
 	
 </Project>

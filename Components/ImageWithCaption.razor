@@ -1,0 +1,18 @@
+﻿<MudPaper Elevation="0" Class="mx-4 d-flex justify-center">
+    <MudPaper Elevation="0" Class="">
+        <MudImage Src="@ImageSource" Fluid=true Alt="@ImageAltName" />
+        <MudText Typo="Typo.subtitle2" Align="Align.Center">
+            @ImageCaption
+            It is time to create a clock.
+        </MudText>
+    </MudPaper>
+</MudPaper>
+@code {
+    [Parameter]
+    public string ImageSource { get; set; } = String.Empty;
+
+    [Parameter]
+    public string ImageCaption { get; set; } = string.Empty;
+    [Parameter]
+    public string ImageAltName { get; set; } = "CatLike Coding";
+}

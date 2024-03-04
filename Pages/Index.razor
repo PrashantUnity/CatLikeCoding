@@ -1,34 +1,15 @@
 ﻿@page "/" 
 
-<PageTitle>Creating a Clock</PageTitle>
-
-<MudPaper Elevation="0">
-    <MudPaper Elevation="0" >
-        <MudText Typo="Typo.h3" Align="Align.Center" Style="font-weight:bold">Game Objects and Scripts</MudText>
-        <MudPaper > 
-            <MudText Typo="Typo.subtitle2" Align="Align.Center">Creating a Clock</MudText>
-            <MudText Typo="Typo.subtitle2" Align="Align.Center">Updated 2021-05-18 Published 2017-09-08</MudText>
-        </MudPaper>
-    </MudPaper>
-    <MudPaper Elevation="0">
-        <MudList>
-
-        </MudList>
-    </MudPaper>
-</MudPaper>
 
 
-@code {
-    [Inject]
-    public IJSRuntime jSRuntime { get; set; }
-
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+<CodeBlock>
+    <SourceCode>// Initialisation Of Prism js
+protected override async Task OnAfterRenderAsync(bool firstRender)
+{
+    if (firstRender)
     {
-        if (firstRender)
-        {
-            await jSRuntime.InvokeVoidAsync("initializePrism");
-        }
-    } 
-    
-}
+        await jSRuntime.InvokeVoidAsync("initializePrism");
+    }
+}</SourceCode>
+</CodeBlock>
+ 

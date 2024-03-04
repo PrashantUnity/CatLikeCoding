@@ -1,0 +1,42 @@
+﻿
+<MudDrawer @bind-Open="ShowDrawer"  Anchor="Anchor.Right" Elevation="0" Variant="@DrawerVariant.Mini">
+    <MudNavMenu>
+        <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Menu" IconColor="Color.Info" OnClick="ShowRightDrawer">Content</MudNavLink>
+        <MudNavGroup Title="Creating a Project" Icon="@Icons.Material.Filled.FiberNew" IconColor="Color.Primary">
+            <MudNavLink Href="@($"{path}#1.1")" Icon="@Icons.Material.Filled.Filter1" IconColor="Color.Success">New Project</MudNavLink>
+            <MudNavLink Href="@($"{path}#1.2")" Icon="@Icons.Material.Filled.Filter2" IconColor="Color.Success">Editor Layout</MudNavLink>
+            <MudNavLink Href="@($"{path}#1.3")" Icon="@Icons.Material.Filled.Filter3" IconColor="Color.Success">Packages</MudNavLink>
+            <MudNavLink Href="@($"{path}#1.4")" Icon="@Icons.Material.Filled.Filter4" IconColor="Color.Success">Color Space</MudNavLink>
+            <MudNavLink Href="@($"{path}#1.5")" Icon="@Icons.Material.Filled.Filter5" IconColor="Color.Success">Sample Scene</MudNavLink>
+        </MudNavGroup>
+        <MudNavGroup Title="Building a Simple Clock" Icon="@Icons.Material.Filled.AccessTime" IconColor="Color.Secondary">
+            <MudNavLink Href="@($"{path}#2.1")" Icon="@Icons.Material.Filled.Filter1" IconColor="Color.Success">Creating a Game Object</MudNavLink>
+            <MudNavLink Href="@($"{path}#2.2")" Icon="@Icons.Material.Filled.Filter2" IconColor="Color.Success">Creating the Face of the Clock</MudNavLink>
+            <MudNavLink Href="@($"{path}#2.3")" Icon="@Icons.Material.Filled.Filter3" IconColor="Color.Success">Creating the Clock Periphery</MudNavLink>
+            <MudNavLink Href="@($"{path}#2.4")" Icon="@Icons.Material.Filled.Filter4" IconColor="Color.Success">Twelve Hour Indicators</MudNavLink>
+            <MudNavLink Href="@($"{path}#2.5")" Icon="@Icons.Material.Filled.Filter5" IconColor="Color.Success">Creating the Arms</MudNavLink>
+        </MudNavGroup>
+        <MudNavGroup Title="Animating the Clock" Icon="@Icons.Material.Filled.AvTimer" IconColor="Color.Tertiary" >
+            <MudNavLink Href="@($"{path}#3.1")" Icon="@Icons.Material.Filled.Filter1" IconColor="Color.Success">C# Script Asset</MudNavLink>
+            <MudNavLink Href="@($"{path}#3.2")" Icon="@Icons.Material.Filled.Filter2" IconColor="Color.Success">Defining a Component Type</MudNavLink>
+            <MudNavLink Href="@($"{path}#3.3")" Icon="@Icons.Material.Filled.Filter3" IconColor="Color.Success">Getting Hold of an Arm</MudNavLink>
+            <MudNavLink Href="@($"{path}#3.4")" Icon="@Icons.Material.Filled.Filter4" IconColor="Color.Success">Knowing all Three Arms</MudNavLink>
+            <MudNavLink Href="@($"{path}#3.5")" Icon="@Icons.Material.Filled.Filter5" IconColor="Color.Success">Waking Up</MudNavLink>
+            <MudNavLink Href="@($"{path}#3.6")" Icon="@Icons.Material.Filled.Filter6" IconColor="Color.Success">Rotating via Code</MudNavLink>
+            <MudNavLink Href="@($"{path}#3.7")" Icon="@Icons.Material.Filled.Filter7" IconColor="Color.Success">Getting the Current Time</MudNavLink>
+            <MudNavLink Href="@($"{path}#3.8")" Icon="@Icons.Material.Filled.Filter8" IconColor="Color.Success">Rotating the Arms</MudNavLink>
+            <MudNavLink Href="@($"{path}#3.9")" Icon="@Icons.Material.Filled.Filter9" IconColor="Color.Success">Animating the Arms</MudNavLink>
+            <MudNavLink Href="@($"{path}#3.10")" Icon="@Icons.Material.Filled.Filter9Plus" IconColor="Color.Success">Continuously Rotating</MudNavLink>
+        </MudNavGroup>
+    </MudNavMenu>
+</MudDrawer> 
+
+@code {
+    bool ShowDrawer = false;
+    string path = "/unity/tutorials/basics/game-objects-and-scripts"; 
+    
+    void ShowRightDrawer()
+    {
+        ShowDrawer = !ShowDrawer;
+    } 
+}
